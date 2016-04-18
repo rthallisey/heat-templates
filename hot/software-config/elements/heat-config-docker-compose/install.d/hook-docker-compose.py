@@ -110,6 +110,7 @@ def main(argv=sys.argv):
     for value in dpath.util.values(config, '*/remove_bootstrap'):
         if value.capitalize() == 'True':
             cmd.append('--force-recreate')
+            dpath.util.delete(config, '*/remove_bootstrap')
 
     log.debug('Running %s' % cmd)
 
