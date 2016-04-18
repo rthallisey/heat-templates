@@ -107,6 +107,10 @@ def main(argv=sys.argv):
         '--no-build',
     ]
 
+    for value in dpath.util.values(config, '*/remove_bootstrap'):
+        if value.capitalize() == 'True':
+            cmd.append('--force-recreate')
+
     log.debug('Running %s' % cmd)
 
     subproc = subprocess.Popen(cmd, stdout=subprocess.PIPE,
